@@ -26,7 +26,7 @@ export class LivrosService {
     private readonly http =
         inject(HttpClient);
     private readonly apiUrl =
-        "http://localhost:3000/api/livros";
+        "https://api-m7-aj9s.onrender.com/api/livros";
 
     // métodos serão adicionados aqui
     listar(): Promise<Livro[]> {
