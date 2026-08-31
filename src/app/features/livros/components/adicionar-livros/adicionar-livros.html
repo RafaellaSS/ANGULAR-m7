@@ -1,0 +1,56 @@
+<!-- ngForm controla a validade dos campos e dispara a criação no envio. -->
+<form class="formulario" #formulario="ngForm" (ngSubmit)="adicionar()">
+	<header class="formulario-cabecalho">
+		<div>
+			<span class="etiqueta"></span>
+			<h2>Novo livro</h2>
+			<p>Adicione um novo livro à sua biblioteca.</p>
+		</div>
+		<span class="indicador">● Em abertura</span>
+	</header>
+
+	<label class="campo campo-titulo">
+		Título
+		<input name="titulo" [(ngModel)]="novoLivro.titulo" required />
+	</label>
+
+	<label class="campo">
+		Autor
+		<input name="autor" [(ngModel)]="novoLivro.autor" required />
+	</label>
+
+	<label class="campo">
+		Categoria
+		<input name="categoria" [(ngModel)]="novoLivro.categoria" required />
+	</label>
+
+	<label class="campo">
+		Ano de publicação
+		<input name="anoPublicacao" type="number" min="0" [(ngModel)]="novoLivro.anoPublicacao" required />
+	</label>
+
+	<label class="campo">
+		Status
+		<select name="status" [(ngModel)]="novoLivro.status" required>
+			@for (status of statusDisponiveis; track status) {
+				<option [value]="status">{{ status }}</option>
+			}
+		</select>
+	</label>
+
+	<label class="campo campo-descricao">
+		Descrição
+		<textarea name="descricao" [(ngModel)]="novoLivro.descricao"></textarea>
+	</label>
+
+	@if (erro) {
+		<p class="erro" role="alert">{{ erro }}</p>
+	}
+
+	<div class="acoes">
+		<button type="button" (click)="cancelar()">Cancelar</button>
+		<button type="submit" [disabled]="formulario.invalid || salvando">
+			{{ salvando ? "Salvando..." : "Criar livro" }}
+		</button>
+	</div>
+</form>

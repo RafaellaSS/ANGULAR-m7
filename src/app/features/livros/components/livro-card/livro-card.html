@@ -1,0 +1,28 @@
+<article class="card">
+    <div class="cabecalho-card">
+        <div>
+            <p class="categoria">{{ livro().categoria }}</p>
+            <h2>{{ livro().titulo }}</h2>
+        </div>
+
+        <span class="badge" [class.indisponivel]="livro().status === 'indisponível'">
+            {{ livro().status }}
+        </span>
+    </div>
+
+    <p class="autor">{{ livro().autor }}</p>
+
+    <div class="acoes">
+        <button type="button" class="btn btn-primary" (click)="alternarStatus()">
+            {{ livro().status === "disponível" ? "Marcar indisponível" : "Marcar disponível" }}
+        </button>
+
+        <button type="button" class="btn btn-danger" (click)="remover()">
+            Excluir
+        </button>
+    </div>
+
+    <a [routerLink]="['/livros', livro().id]" class="detalhes-link">
+        Ver detalhes
+    </a>
+</article>
