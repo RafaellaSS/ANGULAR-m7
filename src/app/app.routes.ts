@@ -3,7 +3,8 @@ import { LivrosPage } from "./features/livros/pages/livros-page/livros-page";
 import { LivroDetalhePage } from "./features/livros/pages/livro-detalhe-page/livro-detalhe-page";
 
 export const routes: Routes = [
-    { path: "", redirectTo: "livros", pathMatch: "full" },
-    { path: "livros", component: LivrosPage },
-    { path: "livros/:id", component: LivroDetalhePage }
+  { path: "", component: LivrosPage },
+  { path: "livros", component: LivrosPage },
+  { path: "livros/:id", component: LivroDetalhePage },
+  { path: "**", redirectTo: "" }
 ];
